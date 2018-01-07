@@ -159,6 +159,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-sql-server-某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/01/07/sql-server-某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔/">sql server 某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔</a>
+    </h1>
+  
+
+        
+        <a href="/2018/01/07/sql-server-某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔/" class="archive-article-date">
+  	<time datetime="2018-01-07T07:16:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>方法中用到两个函数：<br>patindex(%pattern%,expression)模糊匹配，返回从第几位开始匹配<br>例如：patindex(‘%aa%’,’ssaaa’) 返回3 模糊从第三位开始匹配<br>      patindex(‘%aa’,’ssddaa’)  返回5 模糊从第五位开始匹配<br>      patindex(‘%aa’,’ssddaaa’)  返回6 模糊从第六位开始匹配<br>      patindex(‘%aa%’,’ssddaaa’)  返回5 模糊从第五位开始匹配</p>
+<p>另一个是stuff(要替换的表达式1, 起始位置, 替换长度, 替换的表达式2) ，返回值是替换后的字符串  。例如select  STUFF(‘111’,1,1,’2’) 意思是 从下标1 开始，替换1个长度的字符，由1替换为2。结果返回 211 。一般stuff 会和 for xml path(‘’) 连用。</p>
+<p>SELECT<br>      [Series] – 该字段存储格式为 7,8,9,11,10,12 ，数据类型为nvarchar ，页面显示需要翻译成中文<br>   ,Series_Chinese = stuff((select ‘,’ + Val  from a where  PATINDEX(‘%’ + RTRIM(id) + ‘%’, Series)&gt;0<br>   for xml path(‘’) ), 1, 1, ‘’)  FROM  b</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">sql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/01/07/sql-server-某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="w-一个查询条件，查询表中所有字段匹配上的信息" class="article article-type-w  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -179,7 +255,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1 方法：把一个表中的所有字段拼接成一个字段，然后从中like选择</p>
+        <p>1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择</p>
 <p>sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)<br>as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’</p>
 
       
@@ -663,80 +739,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/12/22/随笔/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-一个新的博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/22/一个新的博客/">一个新的博客</a>
-    </h1>
-  
-
-        
-        <a href="/2017/12/22/一个新的博客/" class="archive-article-date">
-  	<time datetime="2017-12-22T01:42:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>hello this is a test!!!</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bbg</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/12/22/一个新的博客/">展开全文 >></a>
         </p>
       
 

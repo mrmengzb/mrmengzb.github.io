@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://mrmengzb.github.io">
   <title>一个查询条件，查询表中所有字段匹配上的信息 | zbMeng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1 方法：把一个表中的所有字段拼接成一个字段，然后从中like选择 sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’">
+  <meta name="description" content="1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择 sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’">
 <meta name="keywords" content="sql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个查询条件，查询表中所有字段匹配上的信息">
 <meta property="og:url" content="https://mrmengzb.github.io/2018/01/07/一个查询条件，查询表中所有字段匹配上的信息/index.html">
 <meta property="og:site_name" content="zbMeng的博客">
-<meta property="og:description" content="1 方法：把一个表中的所有字段拼接成一个字段，然后从中like选择 sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’">
-<meta property="og:updated_time" content="2018-01-07T07:01:37.127Z">
+<meta property="og:description" content="1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择 sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’">
+<meta property="og:updated_time" content="2018-01-07T07:04:29.931Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个查询条件，查询表中所有字段匹配上的信息">
-<meta name="twitter:description" content="1 方法：把一个表中的所有字段拼接成一个字段，然后从中like选择 sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’">
+<meta name="twitter:description" content="1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择 sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’">
   
     <link rel="alternative" href="/atom.xml" title="zbMeng的博客" type="application/atom+xml">
   
@@ -178,7 +178,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1 方法：把一个表中的所有字段拼接成一个字段，然后从中like选择</p>
+        <p>1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择</p>
 <p>sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)<br>as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’</p>
 
       
@@ -283,6 +283,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2018/01/07/sql-server-某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          sql server 某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔
+        
+      </div>
+    </a>
   
   
     <a href="/2018/01/07/sql-server-自定义排序/" id="article-nav-older" class="article-nav-link-wrap">
