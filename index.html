@@ -183,8 +183,8 @@
 <p>另一个是stuff(要替换的表达式1, 起始位置, 替换长度, 替换的表达式2) ，返回值是替换后的字符串  。例如select  STUFF(‘111’,1,1,’2’) 意思是 从下标1 开始，替换1个长度的字符，由1替换为2。结果返回 211 。一般stuff 会和 for xml path(‘’) 连用。</p>
 <pre><code>[Series] -- 该字段存储格式为 7,8,9,11,10,12 ，数据类型为nvarchar ，页面显示需要翻译成中文
 SELECT stuff((select &apos;,&apos; + Val  from a where  PATINDEX(&apos;%&apos; + RTRIM(id) + &apos;%&apos;, Series)&gt;0
-</code></pre><p>   for xml path(‘’) ), 1, 1, ‘’) as SeriesName FROM  b</p>
-
+for xml path(&apos;&apos;) ), 1, 1, &apos;&apos;) as SeriesName FROM  b
+</code></pre>
       
 
       
