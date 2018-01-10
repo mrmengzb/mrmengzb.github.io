@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://mrmengzb.github.io">
-  <title>hexo 如何发布新的文章到 github | zbMeng的博客</title>
+  <title>sql server 创建函数及调试 | zbMeng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、使用hexo和github搭建完成自己的博客，那么如何发布一篇新的文章呢(hexo常用命令见：https://mrmengzb.github.io/2017/12/22/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)    法一    1 hexo new “postName” #新建文章（新建完成自己编辑内容）    2 hexo c #清除缓存 网页">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="自定义函数Fun_GetIdNames，目的：把 12,34,345 转换为 ‘12’,’34’,’345’ ALTER FUNCTION [dbo].[Fun_GetIdNames] ( @tableName AS varchar(200),–表名称   @columName AS varchar(200),–要查询的列     @id AS varchar(200),–查询标识   @ids">
+<meta name="keywords" content="sql server">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo 如何发布新的文章到 github">
-<meta property="og:url" content="https://mrmengzb.github.io/2017/12/22/hexo-如何发布新的文章到-github/index.html">
+<meta property="og:title" content="sql server 创建函数及调试">
+<meta property="og:url" content="https://mrmengzb.github.io/2018/01/10/sql-server-创建函数及调试/index.html">
 <meta property="og:site_name" content="zbMeng的博客">
-<meta property="og:description" content="一、使用hexo和github搭建完成自己的博客，那么如何发布一篇新的文章呢(hexo常用命令见：https://mrmengzb.github.io/2017/12/22/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)    法一    1 hexo new “postName” #新建文章（新建完成自己编辑内容）    2 hexo c #清除缓存 网页">
-<meta property="og:updated_time" content="2018-01-07T06:36:04.519Z">
+<meta property="og:description" content="自定义函数Fun_GetIdNames，目的：把 12,34,345 转换为 ‘12’,’34’,’345’ ALTER FUNCTION [dbo].[Fun_GetIdNames] ( @tableName AS varchar(200),–表名称   @columName AS varchar(200),–要查询的列     @id AS varchar(200),–查询标识   @ids">
+<meta property="og:updated_time" content="2018-01-10T12:27:01.560Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo 如何发布新的文章到 github">
-<meta name="twitter:description" content="一、使用hexo和github搭建完成自己的博客，那么如何发布一篇新的文章呢(hexo常用命令见：https://mrmengzb.github.io/2017/12/22/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)    法一    1 hexo new “postName” #新建文章（新建完成自己编辑内容）    2 hexo c #清除缓存 网页">
+<meta name="twitter:title" content="sql server 创建函数及调试">
+<meta name="twitter:description" content="自定义函数Fun_GetIdNames，目的：把 12,34,345 转换为 ‘12’,’34’,’345’ ALTER FUNCTION [dbo].[Fun_GetIdNames] ( @tableName AS varchar(200),–表名称   @columName AS varchar(200),–要查询的列     @id AS varchar(200),–查询标识   @ids">
   
     <link rel="alternative" href="/atom.xml" title="zbMeng的博客" type="application/atom+xml">
   
@@ -168,27 +168,31 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hexo-如何发布新的文章到-github" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="w-sql-server-创建函数及调试" class="article article-type-w " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      hexo 如何发布新的文章到 github
+      sql server 创建函数及调试
     </h1>
   
 
         
-        <a href="/2017/12/22/hexo-如何发布新的文章到-github/" class="archive-article-date">
-  	<time datetime="2017-12-22T02:12:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-22</time>
+        <a href="/2018/01/10/sql-server-创建函数及调试/" class="archive-article-date">
+  	<time datetime="2018-01-10T12:19:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、使用hexo和github搭建完成自己的博客，那么如何发布一篇新的文章呢(hexo常用命令见：<a href="https://mrmengzb.github.io/2017/12/22/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">https://mrmengzb.github.io/2017/12/22/hexo-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</a>)<br>    法一<br>    1 hexo new “postName” #新建文章（新建完成自己编辑内容）<br>    2 hexo c #清除缓存 网页正常情况下可以忽略此条命令<br>    3 hexo g #生成静态网页<br>    4 hexo d #开始部署<br>    法二<br>    1 hexo new “postName” #新建文章（新建完成自己编辑内容，注：在主目录下eg：/d/hexo+github/hex）<br>    2 hexo d -g，生成以及部署了<br>    注意：（需要在git base 窗口中执行！！！！！）</p>
+        <p>自定义函数Fun_GetIdNames，目的：把 12,34,345 转换为 ‘12’,’34’,’345’<br> ALTER FUNCTION [dbo].[Fun_GetIdNames]<br> ( @tableName AS varchar(200),–表名称<br>   @columName AS varchar(200),–要查询的列<br>     @id AS varchar(200),–查询标识<br>   @ids AS varchar(1000) –目标字段<br> )<br> RETURNS varchar(1000)<br> WITH RETURNS NULL ON NULL INPUT<br> AS<br> BEGIN<br> DECLARE @result as VARCHAR(1000)<br> DECLARE @littleID as VARCHAR(200)<br> SET @ids = @ids + ‘,’<br> SET @result = ‘’<br> WHILE (@ids &lt;&gt; ‘’)<br>      BEGIN<br>          SET @littleID = LEFT(@ids, CHARINDEX(‘,’, @ids, 1) -1)<br>                         IF @result &lt;&gt; ‘’<br>                             set @result = @result +’’’,’’’+ @littleID<br>                         else<br>                             set @result = ‘’’’ + @littleID<br>          –STUFF()函数用于删除指定长度的字符，并可以在指定的起点处插入另一组字符。<br>          SET @ids = STUFF(@ids, 1, CHARINDEX(‘,’, @ids, 1), ‘’)<br>      END<br>      RETURN @result+’’’’ –返回值<br>   RETURN NULL<br> END</p>
+<p>调用方法：SELECT  dbo.Fun_GetIdNames(‘CM_OrderContract c’,’c.name’,’c.ContractID’,a.PurchaseContractNo) from C_ArchivedInfo  a;</p>
+<p>—–调试（直接在窗体中执行，可单步调试）</p>
+<p>Declare @tableName AS varchar(200) –表名称<br>Declare @columName AS varchar(200) –要查询的列<br>Declare    @id AS varchar(200) –查询标识<br>Declare @ids AS varchar(200) –目标字段<br> –直接给变量赋值<br> Set @tableName=’CM_OrderContract’<br> Set @columName=’name’<br> Set @id=’ContractID’<br> Set @ids=’19491,19477,19484’</p>
+<p>DECLARE @result as VARCHAR(200)<br>DECLARE @littleID as VARCHAR(200)<br>SET @ids = @ids + ‘,’<br>Set @result=’’<br>WHILE (@ids &lt;&gt; ‘’)<br>     BEGIN<br>         SET @littleID = LEFT(@ids, CHARINDEX(‘,’, @ids, 1) -1)<br>                        if @result = ‘’<br>                            set @result = @result+’’’’+ @littleID<br>                        else<br>                            set @result = @result +’’’,’’’+ @littleID<br>         –STUFF()函数用于删除指定长度的字符，并可以在指定的起点处插入另一组字符。<br>         SET @ids = STUFF(@ids, 1, CHARINDEX(‘,’, @ids, 1), ‘’);<br>     END<br>     print @result+’’’’ –输出结果（print）</p>
 
       
 
@@ -223,7 +227,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql server</a>
         		</li>
       		
 		</ul>
@@ -279,7 +283,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://mrmengzb.github.io/2017/12/22/hexo-如何发布新的文章到-github/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://mrmengzb.github.io/2018/01/10/sql-server-创建函数及调试/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -293,18 +297,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/12/22/hexo-常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          hexo 常用命令
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/12/22/随笔/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">随笔</div>
+    <a href="/2018/01/07/sql-server-某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">sql server 某字段存储另一个表的多个id值并以逗号分隔，现根据id去拼接中文并同样以逗号分隔</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -332,7 +327,7 @@ var _hmt = _hmt || [];
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hexo-如何发布新的文章到-github" data-title="hexo 如何发布新的文章到 github" data-url="https://mrmengzb.github.io/2017/12/22/hexo-如何发布新的文章到-github/"></div>
+	<div class="ds-thread" data-thread-key="sql-server-创建函数及调试" data-title="sql server 创建函数及调试" data-url="https://mrmengzb.github.io/2018/01/10/sql-server-创建函数及调试/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
