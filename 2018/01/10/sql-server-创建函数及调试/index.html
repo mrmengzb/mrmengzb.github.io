@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://mrmengzb.github.io/2018/01/10/sql-server-创建函数及调试/index.html">
 <meta property="og:site_name" content="zbMeng的博客">
 <meta property="og:description" content="定义函数Fun_GetIdNames，目的：把 12,34,345 转换为 &amp;apos;12&amp;apos;,&amp;apos;34&amp;apos;,&amp;apos;345&amp;apos;  ALTER FUNCTION [dbo].[Fun_GetIdNames] ( @tableName AS varchar(200),–表名称   @columName AS varchar(200),–要查询的列     @id">
-<meta property="og:updated_time" content="2018-01-10T13:09:18.085Z">
+<meta property="og:updated_time" content="2018-01-10T13:11:36.979Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sql server 创建函数及调试">
 <meta name="twitter:description" content="定义函数Fun_GetIdNames，目的：把 12,34,345 转换为 &amp;apos;12&amp;apos;,&amp;apos;34&amp;apos;,&amp;apos;345&amp;apos;  ALTER FUNCTION [dbo].[Fun_GetIdNames] ( @tableName AS varchar(200),–表名称   @columName AS varchar(200),–要查询的列     @id">
@@ -194,7 +194,9 @@ var _hmt = _hmt || [];
 
 
 -----调试（直接在窗体中执行，可单步调试）
-</code></pre><p> Declare @tableName AS varchar(200) –表名称<br> Declare @columName AS varchar(200) –要查询的列<br> Declare    @id AS varchar(200) –查询标识<br> Declare @ids AS varchar(200) –目标字段<br>    直接给变量赋值<br> Set @tableName=’CM_OrderContract’<br> Set @columName=’name’<br> Set @id=’ContractID’<br> Set @ids=’19491,19477,19484’</p>
+</code></pre><p> Declare @tableName AS varchar(200) –表名称<br> Declare @columName AS varchar(200) –要查询的列<br> Declare    @id AS varchar(200) –查询标识<br> Declare @ids AS varchar(200) –目标字段</p>
+<pre><code>直接给变量赋值
+</code></pre><p> Set @tableName=’CM_OrderContract’<br> Set @columName=’name’<br> Set @id=’ContractID’<br> Set @ids=’19491,19477,19484’</p>
 <p>DECLARE @result as VARCHAR(200)<br>DECLARE @littleID as VARCHAR(200)<br>SET @ids = @ids + ‘,’<br>Set @result=’’<br>WHILE (@ids &lt;&gt; ‘’)<br>     BEGIN<br>         SET @littleID = LEFT(@ids, CHARINDEX(‘,’, @ids, 1) -1)<br>                        if @result = ‘’<br>                            set @result = @result+’’’’+ @littleID<br>                        else<br>                            set @result = @result +’’’,’’’+ @littleID<br>         –STUFF()函数用于删除指定长度的字符，并可以在指定的起点处插入另一组字符。<br>         SET @ids = STUFF(@ids, 1, CHARINDEX(‘,’, @ids, 1), ‘’);<br>     END<br>     print @result+’’’’ –输出结果（print）</p>
 
       
