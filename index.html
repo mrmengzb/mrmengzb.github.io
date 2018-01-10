@@ -468,8 +468,8 @@ for xml path(&apos;&apos;) ), 1, 1, &apos;&apos;) as SeriesName FROM  b
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择</p>
-<p>sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)<br>as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’</p>
+        <pre><code>1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择
+</code></pre><p>sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)<br>as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’</p>
 
       
 

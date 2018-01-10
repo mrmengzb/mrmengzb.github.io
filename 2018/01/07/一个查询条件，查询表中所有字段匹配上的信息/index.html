@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://mrmengzb.github.io/2018/01/07/一个查询条件，查询表中所有字段匹配上的信息/index.html">
 <meta property="og:site_name" content="zbMeng的博客">
 <meta property="og:description" content="1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择 sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’">
-<meta property="og:updated_time" content="2018-01-07T07:04:29.931Z">
+<meta property="og:updated_time" content="2018-01-10T13:16:56.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一个查询条件，查询表中所有字段匹配上的信息">
 <meta name="twitter:description" content="1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择 sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’">
@@ -188,8 +188,8 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择</p>
-<p>sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)<br>as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’</p>
+        <pre><code>1 方法：把一个表中的所有字段拼接成一个字段concat()函数，然后从中like选择
+</code></pre><p>sql函数： select * from (SELECT CONCAT(a.Name,a.NameChs,a.Description,a.Bank,a.Account)<br>as LikeName from table1 a) aa where aa.LikeName like ‘%xxx%’</p>
 
       
 
