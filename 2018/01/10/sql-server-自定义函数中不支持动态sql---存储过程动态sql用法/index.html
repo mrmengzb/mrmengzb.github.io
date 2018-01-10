@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://mrmengzb.github.io">
-  <title>Hello World | zbMeng的博客</title>
+  <title>sql server 自定义函数中不支持动态sql | zbMeng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta name="keywords" content="java">
+  <meta name="description" content="1 []SqlServer的自定义函数不能执行insert、更新操作；不能使用动态sql。 可以考虑存储过程  2 存储过程动态执行 SQL 语句：    create proc GetStus    @StuNo nvarchar(500)    as    begin        declare @Sql nvarchar(3000)         if(@StuNo is not nul">
+<meta name="keywords" content="sql server">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://mrmengzb.github.io/2017/12/19/hello-world/index.html">
+<meta property="og:title" content="sql server 自定义函数中不支持动态sql">
+<meta property="og:url" content="https://mrmengzb.github.io/2018/01/10/sql-server-自定义函数中不支持动态sql---存储过程动态sql用法/index.html">
 <meta property="og:site_name" content="zbMeng的博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
-<meta property="og:updated_time" content="2017-12-19T01:48:42.239Z">
+<meta property="og:description" content="1 []SqlServer的自定义函数不能执行insert、更新操作；不能使用动态sql。 可以考虑存储过程  2 存储过程动态执行 SQL 语句：    create proc GetStus    @StuNo nvarchar(500)    as    begin        declare @Sql nvarchar(3000)         if(@StuNo is not nul">
+<meta property="og:updated_time" content="2018-01-10T12:50:59.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta name="twitter:title" content="sql server 自定义函数中不支持动态sql">
+<meta name="twitter:description" content="1 []SqlServer的自定义函数不能执行insert、更新操作；不能使用动态sql。 可以考虑存储过程  2 存储过程动态执行 SQL 语句：    create proc GetStus    @StuNo nvarchar(500)    as    begin        declare @Sql nvarchar(3000)         if(@StuNo is not nul">
   
     <link rel="alternative" href="/atom.xml" title="zbMeng的博客" type="application/atom+xml">
   
@@ -168,35 +168,71 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-hello-world" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-sql-server-自定义函数中不支持动态sql---存储过程动态sql用法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      sql server 自定义函数中不支持动态sql
     </h1>
   
 
         
-        <a href="/2017/12/19/hello-world/" class="archive-article-date">
-  	<time datetime="2017-12-19T01:48:42.239Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-19</time>
+        <a href="/2018/01/10/sql-server-自定义函数中不支持动态sql---存储过程动态sql用法/" class="archive-article-date">
+  	<time datetime="2018-01-10T12:30:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+        <pre><code>1 []SqlServer的自定义函数不能执行insert、更新操作；不能使用动态sql。
+可以考虑存储过程
+
+2 存储过程动态执行 SQL 语句：
+   create proc GetStus
+   @StuNo nvarchar(500)
+   as
+   begin
+       declare @Sql nvarchar(3000)
+
+       if(@StuNo is not null and @StuNo &lt;&gt; &apos;&apos;)
+       begin
+           set @Sql=&apos; select * from Student where S_StuNo in (&apos;+@StuNo+&apos;) &apos;
+       end
+
+       exec (@Sql)    --执行动态 sql 
+   end
+
+   exec GetStus &apos;003,005,009&apos;        --执行存储过程 GetStus
+
+3 使用系统存储过程 sp_executesql 动态 sql 给变量赋值。
+   ALTER proc [dbo].[GetStus]
+   @StuNo nvarchar(500)
+   as
+   begin
+       declare @Sql nvarchar(3000)
+       declare @C_Id int
+       declare @Cou int
+
+       if(@StuNo is not null and @StuNo &lt;&gt; &apos;&apos;)
+       begin
+           set @Sql=&apos; select @CId=C_S_Id,@cou=count(1) from Student where S_StuNo in (&apos;+@StuNo+&apos;) group by C_S_Id &apos;
+       end
+
+       exec sp_executesql @Sql,N&apos;@CId int output,@cou int output&apos;,@CId = @C_Id output,@cou = @Cou output;
+
+       select @C_Id,@Cou    --查看返回变量的值
+
+       select * from Course where C_Id=@C_Id 
+   end
+
+   exec GetStus &apos;005&apos;        --执行存储过程 GetStus
+</code></pre><p>PS：sp_executesql 要求动态 Sql 和动态 Sql 参数列表必须是 NVARCHAR 类型。</p>
+<p>动态Sql的参数列表与外部提供值的参数列表顺序必需一致，例如：N’@CId int output,@cou int output’,@CId = @C_Id output,@cou = @Cou output;，@CId 对应 @C_Id，@cou 对应 @Cou。</p>
+<p>动态SQl的参数列表与外部提供参数的参数列表参数名可以同名，如果不一样，需显示注明，例如：N’@CId int output,@cou int output’,@CId = @C_Id output,@cou = @Cou output;，即 @CId = @C_Id 和 @cou = @Cou 。</p>
 
       
 
@@ -226,6 +262,17 @@ var _hmt = _hmt || [];
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">sql server</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -276,7 +323,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://mrmengzb.github.io/2017/12/19/hello-world/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://mrmengzb.github.io/2018/01/10/sql-server-自定义函数中不支持动态sql---存储过程动态sql用法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -290,15 +337,11 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2017/12/19/如何写好hexo博客，Markdown语法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          如何写好hexo博客，Markdown语法
-        
-      </div>
-    </a>
   
+    <a href="/2018/01/10/sql-server-创建函数及调试/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">sql server 创建函数及调试</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -324,7 +367,7 @@ var _hmt = _hmt || [];
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="hello-world" data-title="Hello World" data-url="https://mrmengzb.github.io/2017/12/19/hello-world/"></div>
+	<div class="ds-thread" data-thread-key="sql-server-自定义函数中不支持动态sql---存储过程动态sql用法" data-title="sql server 自定义函数中不支持动态sql" data-url="https://mrmengzb.github.io/2018/01/10/sql-server-自定义函数中不支持动态sql---存储过程动态sql用法/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
