@@ -708,7 +708,7 @@ ok,问题解决。
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>PreparedStatementCallback; uncategorized SQLException for SQL []; SQL state [S0001]; error code [8102]; 无法更新标识列 ‘Unid’。; nested exception is com.microsoft.sqlserver.jdbc.SQLServerException: 无法更新标识列 ‘Unid’。<br>那么这种问题，如何和解决呢？<br>很简单，这更新需要更新的列，用原生sql更新，而非封装的方法更新，ok问题解决。<br>标识列是无法更新的，如果非要更新那说明设计上就有问题了，需认真考虑。</p>
+        <p>PreparedStatementCallback; uncategorized SQLException for SQL []; SQL state [S0001]; error code [8102]; 无法更新标识列 ‘Unid’。; nested exception is com.microsoft.sqlserver.jdbc.SQLServerException: 无法更新标识列 ‘Unid’。<br>那么这种问题，如何和解决呢？<br>    在数据库中是可以执行的，但是在代码中报错。<br>    问题原因：这更新需要更新的列，用原生sql更新，而非封装的方法更新，ok问题解决。（ps：这里是我 程序的问题，同时应该注意：标识列是自增时是无法更新的。）</p>
 
       
 
@@ -931,15 +931,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">异常问题</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">sql</a>
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -951,11 +947,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+                <a href="javascript:void(0)" class="js-tag color4">sql</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
               </li>
             
             <div class="clearfix"></div>
