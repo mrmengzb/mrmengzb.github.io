@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://mrmengzb.github.io">
   <title>SQL Server 行转列 | zbMeng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、多行转成一列,并以”,”隔开表名：A表结构：|id| name| val|1|张三|aaa||1|张三|eeee||1|张三|yyyy||2|李四|tttt||2|李四|kkkk||2|李四|hhhh||2|李四|gggg| 期望结果：| | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句：SELECT  name ,">
+  <meta name="description" content="一、多行转成一列,并以”,”隔开表名：A表结构：| id| name| val|-| :- | :-: ||1|张三|aaa||1|张三|eeee||1|张三|yyyy||2|李四|tttt||2|李四|kkkk||2|李四|hhhh||2|李四|gggg| 期望结果：|  | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句">
 <meta name="keywords" content="sql server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL Server 行转列">
 <meta property="og:url" content="https://mrmengzb.github.io/2018/01/31/SQL-Server-行转列/index.html">
 <meta property="og:site_name" content="zbMeng的博客">
-<meta property="og:description" content="一、多行转成一列,并以”,”隔开表名：A表结构：|id| name| val|1|张三|aaa||1|张三|eeee||1|张三|yyyy||2|李四|tttt||2|李四|kkkk||2|李四|hhhh||2|李四|gggg| 期望结果：| | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句：SELECT  name ,">
-<meta property="og:updated_time" content="2018-01-31T07:22:52.936Z">
+<meta property="og:description" content="一、多行转成一列,并以”,”隔开表名：A表结构：| id| name| val|-| :- | :-: ||1|张三|aaa||1|张三|eeee||1|张三|yyyy||2|李四|tttt||2|李四|kkkk||2|李四|hhhh||2|李四|gggg| 期望结果：|  | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句">
+<meta property="og:updated_time" content="2018-01-31T07:25:12.333Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL Server 行转列">
-<meta name="twitter:description" content="一、多行转成一列,并以”,”隔开表名：A表结构：|id| name| val|1|张三|aaa||1|张三|eeee||1|张三|yyyy||2|李四|tttt||2|李四|kkkk||2|李四|hhhh||2|李四|gggg| 期望结果：| | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句：SELECT  name ,">
+<meta name="twitter:description" content="一、多行转成一列,并以”,”隔开表名：A表结构：| id| name| val|-| :- | :-: ||1|张三|aaa||1|张三|eeee||1|张三|yyyy||2|李四|tttt||2|李四|kkkk||2|李四|hhhh||2|李四|gggg| 期望结果：|  | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句">
   
     <link rel="alternative" href="/atom.xml" title="zbMeng的博客" type="application/atom+xml">
   
@@ -188,10 +188,19 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、多行转成一列,并以”,”隔开<br>表名：A<br>表结构：<br>|id| name| val<br>|1|张三|aaa|<br>|1|张三|eeee|<br>|1|张三|yyyy|<br>|2|李四|tttt|<br>|2|李四|kkkk|<br>|2|李四|hhhh|<br>|2|李四|gggg|</p>
-<p>期望结果：<br>| | name| val<br>|1|张三|aaa,eeee,yyyy|<br>|2|李四|tttt,kkkk,hhhh,gggg|</p>
-<p>查询语句：<br>SELECT  name ,<br>        val  = ( STUFF(( SELECT    ‘,’ + val<br>                          FROM      A<br>                          WHERE     name = Test.name<br>                        FOR<br>                          XML PATH(‘’)<br>                        ), 1, 1, ‘’) )<br>FROM    A AS Test<br>GROUP BY name;</p>
-
+        <p>一、多行转成一列,并以”,”隔开<br>表名：A<br>表结构：<br>| id| name| val<br>|-| :- | :-: |<br>|1|张三|aaa|<br>|1|张三|eeee|<br>|1|张三|yyyy|<br>|2|李四|tttt|<br>|2|李四|kkkk|<br>|2|李四|hhhh|<br>|2|李四|gggg|</p>
+<p>期望结果：<br>|  | name| val<br>|1|张三|aaa,eeee,yyyy|<br>|2|李四|tttt,kkkk,hhhh,gggg|</p>
+<pre><code>查询语句：
+SELECT  name ,
+        val  = ( STUFF(( SELECT    &apos;,&apos; + val 
+                          FROM      A
+                          WHERE     name = Test.name
+                        FOR
+                          XML PATH(&apos;&apos;)
+                        ), 1, 1, &apos;&apos;) )
+FROM    A AS Test
+GROUP BY name;
+</code></pre>
       
 
       
