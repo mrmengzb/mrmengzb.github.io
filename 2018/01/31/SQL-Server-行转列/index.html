@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://mrmengzb.github.io">
   <title>SQL Server 行转列 | zbMeng的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一、多行转成一列,并以”,”隔开表名：A表结构：    id name val     1 张三 aaa   1 张三 eeee   1 张三 yyyy   2 李四 tttt   2 李四 kkkk   2 李四 hhhh   2 李四 gggg    期望结果： |  | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句：">
+  <meta name="description" content="一、多行转成一列,并以”,”隔开表名：A表结构：    id name val     1 张三 aaa   1 张三 eeee   1 张三 yyyy   2 李四 tttt   2 李四 kkkk   2 李四 hhhh   2 李四 gggg    期望结果：     name val     1 张三 aaa,eeee,yyyy   2 李四 tttt,kkkk,hhhh,gggg">
 <meta name="keywords" content="sql server">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SQL Server 行转列">
 <meta property="og:url" content="https://mrmengzb.github.io/2018/01/31/SQL-Server-行转列/index.html">
 <meta property="og:site_name" content="zbMeng的博客">
-<meta property="og:description" content="一、多行转成一列,并以”,”隔开表名：A表结构：    id name val     1 张三 aaa   1 张三 eeee   1 张三 yyyy   2 李四 tttt   2 李四 kkkk   2 李四 hhhh   2 李四 gggg    期望结果： |  | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句：">
-<meta property="og:updated_time" content="2018-01-31T07:27:08.446Z">
+<meta property="og:description" content="一、多行转成一列,并以”,”隔开表名：A表结构：    id name val     1 张三 aaa   1 张三 eeee   1 张三 yyyy   2 李四 tttt   2 李四 kkkk   2 李四 hhhh   2 李四 gggg    期望结果：     name val     1 张三 aaa,eeee,yyyy   2 李四 tttt,kkkk,hhhh,gggg">
+<meta property="og:updated_time" content="2018-01-31T07:28:31.529Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL Server 行转列">
-<meta name="twitter:description" content="一、多行转成一列,并以”,”隔开表名：A表结构：    id name val     1 张三 aaa   1 张三 eeee   1 张三 yyyy   2 李四 tttt   2 李四 kkkk   2 李四 hhhh   2 李四 gggg    期望结果： |  | name| val|1|张三|aaa,eeee,yyyy||2|李四|tttt,kkkk,hhhh,gggg| 查询语句：">
+<meta name="twitter:description" content="一、多行转成一列,并以”,”隔开表名：A表结构：    id name val     1 张三 aaa   1 张三 eeee   1 张三 yyyy   2 李四 tttt   2 李四 kkkk   2 李四 hhhh   2 李四 gggg    期望结果：     name val     1 张三 aaa,eeee,yyyy   2 李四 tttt,kkkk,hhhh,gggg">
   
     <link rel="alternative" href="/atom.xml" title="zbMeng的博客" type="application/atom+xml">
   
@@ -236,7 +236,27 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p>期望结果：</p>
-<p>|  | name| val<br>|1|张三|aaa,eeee,yyyy|<br>|2|李四|tttt,kkkk,hhhh,gggg|</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">name</th>
+<th style="text-align:center">val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">aaa,eeee,yyyy</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">李四</td>
+<td style="text-align:center">tttt,kkkk,hhhh,gggg</td>
+</tr>
+</tbody>
+</table>
 <pre><code>查询语句：
 SELECT  name ,
         val  = ( STUFF(( SELECT    &apos;,&apos; + val 

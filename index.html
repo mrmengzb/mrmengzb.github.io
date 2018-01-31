@@ -237,7 +237,27 @@ var _hmt = _hmt || [];
 </tbody>
 </table>
 <p>期望结果：</p>
-<p>|  | name| val<br>|1|张三|aaa,eeee,yyyy|<br>|2|李四|tttt,kkkk,hhhh,gggg|</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">name</th>
+<th style="text-align:center">val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:center">张三</td>
+<td style="text-align:center">aaa,eeee,yyyy</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">李四</td>
+<td style="text-align:center">tttt,kkkk,hhhh,gggg</td>
+</tr>
+</tbody>
+</table>
 <pre><code>查询语句：
 SELECT  name ,
         val  = ( STUFF(( SELECT    &apos;,&apos; + val 
