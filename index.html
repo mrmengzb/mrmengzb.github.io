@@ -189,8 +189,55 @@ var _hmt = _hmt || [];
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一、多行转成一列,并以”,”隔开<br>表名：A<br>表结构：<br>| id| name| val<br>|-| :- | :-: |<br>|1|张三|aaa|<br>|1|张三|eeee|<br>|1|张三|yyyy|<br>|2|李四|tttt|<br>|2|李四|kkkk|<br>|2|李四|hhhh|<br>|2|李四|gggg|</p>
-<p>期望结果：<br>|  | name| val<br>|1|张三|aaa,eeee,yyyy|<br>|2|李四|tttt,kkkk,hhhh,gggg|</p>
+        <p>一、多行转成一列,并以”,”隔开<br>表名：A<br>表结构：</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th style="text-align:left">name</th>
+<th style="text-align:center">val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td style="text-align:left">张三</td>
+<td style="text-align:center">aaa</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:left">张三</td>
+<td style="text-align:center">eeee</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:left">张三</td>
+<td style="text-align:center">yyyy</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:left">李四</td>
+<td style="text-align:center">tttt</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:left">李四</td>
+<td style="text-align:center">kkkk</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:left">李四</td>
+<td style="text-align:center">hhhh</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:left">李四</td>
+<td style="text-align:center">gggg</td>
+</tr>
+</tbody>
+</table>
+<p>期望结果：</p>
+<p>|  | name| val<br>|1|张三|aaa,eeee,yyyy|<br>|2|李四|tttt,kkkk,hhhh,gggg|</p>
 <pre><code>查询语句：
 SELECT  name ,
         val  = ( STUFF(( SELECT    &apos;,&apos; + val 
